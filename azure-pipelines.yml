@@ -43,5 +43,6 @@ steps:
 - checkout: frontend
   fetchTags: true
 
-- bash: |
-    ls | echo
+- bash: ls
+  workingDirectory: (Agent.BuildDirectory)
+  
