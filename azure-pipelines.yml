@@ -11,10 +11,8 @@ resources:
     endpoint: nMagic
     ref: main
     trigger:
-      branches:
-        include:
-          - main
-          
+    - main
+
   - repository: frontend
     type: github
     name: nMagic/test-ci-code
