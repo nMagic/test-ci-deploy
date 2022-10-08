@@ -44,5 +44,4 @@ steps:
   fetchTags: true
 
 - bash: ls
-  workingDirectory: (Agent.BuildDirectory)
   
