@@ -14,9 +14,7 @@ resources:
       branches:
         include:
           - main
-      tags:
-        include:
-          - v.*
+          
   - repository: frontend
     type: github
     name: nMagic/test-ci-code
