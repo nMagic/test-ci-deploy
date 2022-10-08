@@ -3,18 +3,45 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+resources:
+  repositories:
+  - repository: backend
+    type: github
+    name: nMagic/test-ci-backend
+    endpoint: nMagic
+    ref: main
+    trigger:
+      branches:
+        include:
+          - main
+      tags:
+        include:
+          - v.*
+  - repository: frontend
+    type: github
+    name: nMagic/test-ci-code
+    endpoint: nMagic
+    ref: main
+    trigger:
+      branches:
+        include:
+          - main
+      tags:
+        include:
+          - v.*
 
 pool:
   name: Default
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- checkout: self
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- checkout: backend
+  fetchTags: true
+
+- checkout: frontend
+  fetchTags: true
+
+- bash: |
+    ls | echo
